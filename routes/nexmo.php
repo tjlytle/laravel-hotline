@@ -2,16 +2,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-//simple hello world
-Route::get('/answer', function (Request $request) {
-    return [
-        [
-            'action' => 'talk',
-            'text' => 'Welcome to the Laravel Hotline'
-        ]
-
-    ];
-});
+Route::get ('/answer', 'IvrController@answer')->name('ivr.answer');
+Route::post('/menu',   'IvrController@menu'  )->name('ivr.menu');
 
 //just log the events so we can inspect the data
 Route::post('/event', function (Request $request) {
