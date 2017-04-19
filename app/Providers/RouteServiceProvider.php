@@ -39,7 +39,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
-        //
+        $this->mapNexmoRoutes();
     }
 
     /**
@@ -69,5 +69,13 @@ class RouteServiceProvider extends ServiceProvider
              ->middleware('api')
              ->namespace($this->namespace)
              ->group(base_path('routes/api.php'));
+    }
+
+    protected function mapNexmoRoutes()
+    {
+        Route::prefix('nexmo')
+            ->middleware('bindings')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/nexmo.php'));
     }
 }
